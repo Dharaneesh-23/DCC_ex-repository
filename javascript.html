@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Code and Output of Basic programs</title>
+        <link rel="stylesheet" href="javascript.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="position: inherit;overflow: auto;">
+        <div class="menubar">
+            <button class="menu-items" id="pp_btn" onclick="buttonColorChange(this.id,['f_btn','bp_btn','sos_btn','an_btn','ore_btn'])"><p>Pattern printing</p></button>
+            <button class="menu-items" id="f_btn" onclick="buttonColorChange(this.id,['pp_btn','bp_btn','sos_btn','an_btn','ore_btn'])"><p>Factorial</p></button>
+            <button class="menu-items" id="bp_btn" onclick="buttonColorChange(this.id,['f_btn','pp_btn','sos_btn','an_btn','ore_btn'])"><p>border printer</p></button>
+            <button class="menu-items" id="sos_btn" onclick="buttonColorChange(this.id,['f_btn','bp_btn','pp_btn','an_btn','ore_btn'])"><p>sum of series</p></button>
+            <button class="menu-items" id="an_btn" onclick="buttonColorChange(this.id,['f_btn','bp_btn','sos_btn','pp_btn','ore_btn'])"><p>Armstrong number</p></button>
+            <button class="menu-items" id="ore_btn" onclick="buttonColorChange(this.id,['f_btn','bp_btn','sos_btn','an_btn','pp_btn'])"><p>Odd or even</p></button>
+        </div>
+        <div class="input-code-panel">
+            <h1>input and code panel:</h1>
+            <div class="input-panel">
+                <p>Enter the value:</p>
+                <input type="number" id="val">
+                <button onclick="submit_button()" id="submit_btn">EXECUTE</button>
+            </div>
+            <div class="code-panel">
+                <p id="code-container"></p>
+            </div>
+        </div>
+        <div class="output-panel">
+            <h2>output panel</h2>
+            <h3>* Enter the value for the operation</h3>
+            <h3>* Select the operation</h3>
+            <h3>* Get the Result</h3>
+            <p>Result: </p>
+            <p id="output"></p>
+        </div>
+
+        <!--javascript code-->
+        <script>
+            //pattern printing
+            function patternPrintingOutput() {
+                let pp_code = 'for (let i&equals;1;i&lt;&equals;height;i&plus;&plus;){<br>for (let j &equals; height &minus; i; j &gt; 0; j&minus;&minus;) {<br>code &plus;&equals; &lsquo; &lsquo;;<br>}<br>for (let k &equals; 1; k &lt;&equals; i * 2 &minus; 1; k&plus;&plus;) {<br>code &plus;&equals; &lsquo;&sstarf;&lsquo;;<br>}<br>code &plus;&equals; &lsquo;<br>&lsquo;;<br>}<br>';
+                const pp_container = document.getElementById('code-container');
+                pp_container.innerHTML = `<pre>${pp_code}</pre>`;
+            }
+            //factorial
+            function calculateFactorial() {
+                let code = 'if (isNaN(number) || number &lt 0) {<br>alert(&lsquo;enter a non-negative integer.&lsquo;);<br>} else {<br>let factorial &equals; 1;<br>for (let i &equals; 1; i <&equals; number; i&plus;&plus;) {<br>factorial &starf;&equals; i;<br>}<br>';
+                const pp_container = document.getElementById('code-container');
+                pp_container.innerHTML = `<pre>${code}</pre>`;
+            }
+            //sum of series
+            function calculateSeriesSum() {
+                let code = 'let sum = 0;<br>for (let i = 1; i &lt;= number; i++){<br>sum += i;<br>}';
+                const pp_container = document.getElementById('code-container');
+                pp_container.innerHTML = `<pre>${code}</pre>`;
+            }
+
+            //triangle border printer
+            function printTriangleBorder() {
+                let code = 'let row = "";<br>for (let i = 1; i &lt;= height; i++) {<br>for (let j = 1; j &lt;= height; j++) {<br>if (i === height || j === 1 || j === i) {<br>row += "*";<br>} else {<br>row += " ";<br>}<br>}<br>row+="&lt;br&gt;";<br>}';
+                const pp_container = document.getElementById('code-container');
+                pp_container.innerHTML = `<pre>${code}</pre>`;
+            }
+
+            //armstrong number
+            function isArmstrongNumber() {
+                let code = 'for (let i = 0; i &lt; numDigits; i&plus;&plus;) {<br>const digit = parseInt(numStr[i]);<br>sum &plus;= Math.pow(digit, numDigits);<br>}<br>const output = document.getElementById("output");<br>if(sum === number){<br>output.innerHTML = `<pre>${number} is a armstrong number</pre>`;<br>} else{<br>output.innerHTML = `<pre>${number} is not a armstrong number</pre>`;<br>}';
+                const pp_container = document.getElementById('code-container');
+                pp_container.innerHTML = `<pre>${code}</pre>`;
+            }
+            //odd or even
+            function checkOddOrEven() {
+                let code = 'if (number % 2 === 0) {<br>output.innerHTML = `&lt;pre&gt;${number} is even.&lt;/pre&gt;`;<br>} else {<br>output.innerHTML = `&lt;pre&gt;${number} is odd.&lt;/pre&gt;`;<br>}';
+                const pp_container = document.getElementById('code-container');
+                pp_container.innerHTML = `<pre>${code}</pre>`;
+            }
+            let selectedbutton = '';
+            //menu button color change
+            function buttonColorChange(id,ids) {
+                document.getElementById(id).style.backgroundColor= 'rgb(230, 1, 211)';
+                selectedbutton = id;
+                for (const Id of ids){
+                    document.getElementById(Id).style.backgroundColor='white';
+                }
+                switch (id) {
+                    case 'pp_btn':
+                        patternPrintingOutput();
+                        break;
+                    case 'f_btn':
+                        calculateFactorial();
+                        break;
+                    case 'bp_btn':
+                        printTriangleBorder();
+                        break;
+                    case 'sos_btn':
+                        calculateSeriesSum();
+                        break;
+                    case 'an_btn':
+                        isArmstrongNumber();
+                        break;
+                    case 'ore_btn':
+                        checkOddOrEven();
+                        break;
+                    
+                    default:
+                        break;
+                }
+            }
+            function submit_button(){
+                switch (selectedbutton) {
+                    case 'pp_btn':
+                        const height = parseInt(document.getElementById("val").value);
+                        const codeContainer = document.getElementById('output');
+                        if (isNaN(height) || height <= 0) {
+                            codeContainer.innerHTML = `<pre>Enter a number greater than 0</pre>`;
+                        }else{
+                        let code = '';
+                        for (let i = 1; i <= height; i++) {
+                            for (let j = height - i; j > 0; j--) {
+                                code += ' ';
+                            }
+                            for (let k = 1; k <= i * 2 - 1; k++) {
+                                code += '*';
+                            }
+                            code += '<br>';
+                        }    
+                        codeContainer.innerHTML = `<pre>${code}</pre>`;
+                        }
+                        break;
+                    case 'f_btn':
+                        const number = parseInt(document.getElementById("val").value);
+                        const output = document.getElementById("output");
+                        if (isNaN(number) || number < 0) {
+                            output.innerHTML = `<pre>Enter a number greater than 0</pre>`;
+                        } else {
+                            let factorial = 1;
+                            for (let i = 1; i <= number; i++) {
+                                factorial *= i;
+                            }
+                            output.innerHTML = `<pre>Factorial of ${number} is ${factorial}</pre>`;
+                        }
+                        break;
+                    case 'bp_btn':
+                        const hei = parseInt(document.getElementById("val").value);
+                        if (hei < 2) {
+                            alert("Height must be at least 2 to form a triangle.");
+                        }
+                        let row = '';
+                        for (let i = 1; i <= hei; i++) {
+                            for (let j = 1; j <= hei; j++) {
+                                if (i === hei || j === 1 || j === i) {
+                                    row += '*';
+                                } else {
+                                    row += ' ';
+                                }
+                            }
+                            row+='<br>';
+                        }
+                        const output1 = document.getElementById("output");
+                        output1.innerHTML = `<pre>${row}</pre>`;
+                        break;
+                    case 'sos_btn':
+                        const num = parseInt(document.getElementById("val").value);
+                        let sum = 0;
+                        for (let i = 1; i <= num; i++) {
+                            sum += i;
+                        }
+                        const output2 = document.getElementById("output");
+                        output2.innerHTML = `<pre>Sum of series ${num} is ${sum}</pre>`;
+                
+                        break;
+                    case 'an_btn':
+                        const number1 = parseInt(document.getElementById("val").value);
+                        const numStr = number1.toString();
+                        const numDigits = numStr.length;
+                        let su = 0;
+
+                        for (let i = 0; i < numDigits; i++) {
+                            const digit = parseInt(numStr[i]);
+                            su += Math.pow(digit, numDigits);
+                        }
+                        const output3 = document.getElementById("output");
+                        if(su === number1){
+                            output3.innerHTML = `<pre>${number1} is a armstrong number</pre>`;
+                        } else{
+                            output3.innerHTML = `<pre>${number1} is not a armstrong number</pre>`;
+                        
+                        }
+                        break;
+                    case 'ore_btn':
+                        const number4 = parseInt(document.getElementById("val").value);
+                        const output4 = document.getElementById("output");
+                        if (number4 % 2 === 0) {
+                            output4.innerHTML = `<pre>${number4} is even.</pre>`;
+                        } else {
+                            output4.innerHTML = `<pre>${number4} is odd.</pre>`;
+                        }
+                        break;
+                    
+                    default:
+                        break;
+                }
+            }
+        </script>
+    </body>
+</html>
