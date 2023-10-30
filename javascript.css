@@ -1,0 +1,111 @@
+@keyframes glow {
+    0% {
+        box-shadow: 0 0 10px rgb(255, 0, 234);
+    }
+    50% {
+        box-shadow: 0 0 20px rgb(255, 0, 234), 0 0 30px rgb(255, 0, 234);
+    }
+    100% {
+        box-shadow: 0 0 10px rgb(255, 0, 234);
+    }
+}
+
+.menubar{
+    position: absolute;
+    width: 190px;
+    height: calc(100vh - 25px);
+    position: fixed;
+    top: 5;
+    left: 0;
+    background-color: rgb(41, 224, 224);
+    color: black;
+    overflow:auto;
+    
+}
+.menu-items{
+    font-size: 1em;
+    font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    width: 180px;
+    height: 60px;
+    text-align: left;
+    margin-bottom: 10px;
+    border-style:inset;
+    border-width:px;
+    cursor: pointer;
+}
+.menu-items:hover{
+    background-color:rgb(230, 1, 211);
+    animation: glow 10s linear infinite;
+}
+.menu-items:active{
+    background-color:deeppink;
+    animation: glow 10s linear infinite;
+}
+.input-code-panel{
+    position: absolute;
+    top:5;
+    left: 200px;
+    width: calc(100vh - 40px);
+    height: calc(100vh - 20px);
+    background-color: black;
+    border: 5px salmon ridge;
+    font-family: 'Courier New', Courier, monospace;
+    overflow-y: auto;
+}
+.input-code-panel h1{
+    width: calc(75vh - 1px);
+    border:10px silver double;
+    color: antiquewhite;
+    text-transform: uppercase;
+
+}
+.input-panel{
+    display: flex;
+    align-items: center;
+    color: azure;
+    justify-content: center;
+}
+.input-panel p{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 1px 15px;
+}
+.input-panel input{
+    padding: 5px 5px;
+}
+.code-panel{
+    border: 10px silver double;
+    width: 300px;
+    height: 800px;
+    width: calc(75vh - 1px);
+    position:absolute;
+    overflow: auto;
+    color:chartreuse;
+    font-size: 20px;
+}
+.code-panel:hover{
+    background-color: aliceblue;
+    color:black;
+}
+.output-panel{
+    position: absolute;
+    top:5;
+    left: 920px;
+    height: 10px;
+    width:10px;
+    background-color:wheat;
+    width: calc(100vh - 130px);
+    height: calc(100vh - 20px);
+    border: 15px black double;
+    overflow: auto;
+}
+.output-panel p{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-variant: small-caps;
+    color: blueviolet;
+    font-size: 50px;
+}
+.output-panel h2{
+    text-transform: uppercase;
+}
